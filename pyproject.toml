@@ -1,0 +1,22 @@
+[project]
+name = "playnext"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "attrs>=24.2.0",
+    "typer>=0.12.5",
+]
+
+[project.scripts]
+playnext = "playnext.playnext:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = [
+    "rich>=13.8.1",
+]
