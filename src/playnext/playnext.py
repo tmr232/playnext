@@ -12,7 +12,7 @@ app = typer.Typer()
 
 
 def find_episode(episode_root: Path, episode_number: int, bookmark_pattern: re.Pattern) -> Path | None:
-    for root, dirs, files in os.walk(episode_root.parent):
+    for root, _, files in os.walk(episode_root):
         for file in files:
             if (match := bookmark_pattern.search(file)):
                 if int(match.group(1)) == episode_number:
@@ -21,7 +21,7 @@ def find_episode(episode_root: Path, episode_number: int, bookmark_pattern: re.P
 
 def play_episode(episode_path: Path):
     subprocess.check_call(
-        [VLC_PATH, "--fullscreen", "--no-osd", str(episode_path), "vlc://quit"]
+        [VLC_PATH, "--fullscreen", str(episode_path), "vlc://quit"]
     )
 
 
